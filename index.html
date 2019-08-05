@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Codeset - Demo</title>
+		<meta
+			name="description"
+			content="Encode data to a provided output alphabet."
+		/>
+	</head>
+	<link rel="stylesheet" href="./style.css" />
+
+	<body>
+		<div class="hero">
+			<h1>Codeset</h1>
+			<p>Encode data to any provided output alphabet.</p>
+		</div>
+		<div class="demo">
+			<h2>Try it</h2>
+			<div class="alphabet">
+				<label aria-label="Predefined Output Alphabets">
+					<select name="predefined">
+						<option value="alphabet" selected>Alphabet</option>
+						<option value="invisible">Invisible</option>
+						<option value="base64">Base64</option>
+					</select></label
+				>
+				<label aria-label="Output Alphabet Characters">
+					<input
+						type="text"
+						name="alphabet"
+						value="abcdefghijklmnopqrstuvwqyz"
+					/>
+				</label>
+			</div>
+			<div class="encode">
+				<label aria-label="Data to encode">
+					<textarea placeholder="Data to encode" name="encode">
+Hello World</textarea
+					>
+				</label>
+				<button id="encode">Encode</button>
+			</div>
+			<div class="decode">
+				<label aria-label="Data to decode">
+					<textarea placeholder="Data to decode" name="decode">
+eigfgmgmgpcafhgphcgmge</textarea
+					>
+				</label>
+				<button id="decode">Decode</button>
+			</div>
+
+			<div class="visual">
+				<div class="visual__encoded"></div>
+				<div class="visual__decoded"></div>
+			</div>
+		</div>
+
+		<script src="./codeset.umd.js"></script>
+		<script>
+			const { alphabet, codeset } = window.codeset
+
+			const [
+				predefinedInput,
+				alphabetInput,
+				encodeInput,
+				encodeBtn,
+				decodeInput,
+				decodeBtn,
+			] = document.querySelectorAll(
+				'[name="predefined"], [name="alphabet"], [name="encode"], #encode, [name="decode"], #decode'
+			)
+
+			let coder = new codeset({ alphabet })
+
+			alphabetInput.change = function() {
+				const event = new Event('change')
+				this.dispatchEvent(event)
+			}
+
+			predefinedInput.addEventListener('change', () => {
+				const val = predefinedInput.value
+				if (Array.isArray(window.codeset[val])) {
+					alphabetInput.value = window.codeset[val].join('')
+					alphabetInput.change()
+				}
+			})
+
+			alphabetInput.addEventListener('change', () => {
+				const newAlphabet = Array.from(alphabetInput.value.trim())
+				coder = new codeset({ alphabet: newAlphabet })
+			})
+
+			encodeBtn.addEventListener('click', () => {
+				decodeInput.value = coder.encode(encodeInput.value)
+			})
+			decodeBtn.addEventListener('click', () => {
+				encodeInput.value = coder.decode(decodeInput.value)
+			})
+		</script>
+	</body>
+</html>
