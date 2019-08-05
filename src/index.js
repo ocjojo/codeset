@@ -5,6 +5,10 @@ for (let i = 0; i < 1024; i++) {
 	invisible.push(String.fromCodePoint(0xe01f0 + i))
 }
 
+export const base64 = [
+	...'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',
+]
+
 let encoder
 function getEncoder() {
 	if (!encoder) {
