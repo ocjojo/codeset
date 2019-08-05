@@ -1,0 +1,72 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Codeset - Demo</title>
+		<meta
+			name="description"
+			content="Encode data to a provided output alphabet."
+		/>
+	</head>
+	<link rel="stylesheet" href="/style.css" />
+
+	<body>
+		<div class="hero">
+			<h1>Codeset</h1>
+			<p>Encode data to any provided output alphabet.</p>
+		</div>
+		<div class="demo">
+			<h2>Try it</h2>
+			<div class="alphabet">
+				<label
+					>Predefined Output Alphabets
+					<select name="predefined">
+						<option value="alphabet" selected>Alphabet</option>
+						<option value="invisible">Invisible</option>
+						<option value="base64">Base64</option>
+					</select></label
+				>
+				<label
+					>Alphabet
+					<input
+						type="text"
+						name="alphabet"
+						value="abcdefghijklmnopqrstuvwqyz"
+					/>
+				</label>
+			</div>
+			<div class="encode">
+				<label
+					>Data to encode
+					<textarea placeholder="Data to encode" name="encode"></textarea>
+				</label>
+				<button id="encode">Encode</button>
+			</div>
+			<div class="decode">
+				<label
+					>Data to decode
+					<textarea placeholder="Data to decode" name="decode"></textarea>
+				</label>
+				<button id="decode">Decode</button>
+			</div>
+
+			<div class="visual">
+				<div class="visual__encoded"></div>
+				<div class="visual__decoded"></div>
+			</div>
+		</div>
+
+		<script src="/codeset.umd.js"></script>
+		<script>
+			const { invisible, alphabet, codeset } = window.codeset
+			const coder = new codeset({ alphabet: invisible })
+
+			const encoded = coder.encode('Hello World')
+			const send = '⚠️' + encoded + '⚠️'
+			console.log(send)
+			const decoded = coder.decode(send)
+			console.log(decoded)
+		</script>
+	</body>
+</html>
