@@ -5,6 +5,7 @@ html {
 	margin: 0;
 	overflow: hidden;
 	font-size: 62.5%;
+	height: 100%;
 }
 body {
 	margin: 0;
@@ -12,6 +13,7 @@ body {
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 1.6rem;
 	color: #333;
+	height: 100%;
 }
 @media screen and (min-width: 640px) {
 	body {
@@ -21,7 +23,7 @@ body {
 }
 
 :root {
-	--gradient: linear-gradient(45deg, #5c6bc0, #c5cae9);
+	--gradient: linear-gradient(-45deg, #5c6bc0, #c5cae9);
 	--font-code: 'Courier New', Courier, monospace;
 }
 
@@ -53,17 +55,19 @@ textarea {
 	appearance: none;
 	padding: 1rem;
 	font-family: var(--font-code);
-	font-size: 16px;
+	font-size: 1.6rem;
 	outline-color: #c5cae9;
 
 	border: 0;
 	border-radius: 0;
 	background: #fff;
 }
+select {
+	cursor: pointer;
+}
 label {
 	display: inline-block;
 	position: relative;
-	color: #fff;
 	font-size: 0px;
 	margin: 1rem;
 }
