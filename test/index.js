@@ -4,6 +4,5 @@ const { equal } = require('assert').strict
 const coder = new codeset({ alphabet })
 
 const encoded = coder.encode('Hello World')
-console.log(encoded)
 const decoded = coder.decode(encoded)
 equal(decoded, 'Hello World')
