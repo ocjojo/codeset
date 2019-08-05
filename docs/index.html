@@ -10,7 +10,7 @@
 			content="Encode data to a provided output alphabet."
 		/>
 	</head>
-	<link rel="stylesheet" href="/style.css" />
+	<link rel="stylesheet" href="./style.css" />
 
 	<body>
 		<div class="hero">
@@ -58,7 +58,7 @@ eigfgmgmgpcafhgphcgmge</textarea
 			</div>
 		</div>
 
-		<script src="/codeset.umd.js"></script>
+		<script src="./codeset.umd.js"></script>
 		<script>
 			const { alphabet, codeset } = window.codeset
 
@@ -82,7 +82,6 @@ eigfgmgmgpcafhgphcgmge</textarea
 
 			predefinedInput.addEventListener('change', () => {
 				const val = predefinedInput.value
-				console.log(val)
 				if (Array.isArray(window.codeset[val])) {
 					alphabetInput.value = window.codeset[val].join('')
 					alphabetInput.change()
